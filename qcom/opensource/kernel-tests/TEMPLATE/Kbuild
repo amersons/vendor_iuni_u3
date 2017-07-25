@@ -1,0 +1,4 @@
+# Kernel module make instructions go here.
+#
+obj-m := xyz_module.o
+xyz_module-objs := xyzmod.o

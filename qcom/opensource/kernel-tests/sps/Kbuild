@@ -1,0 +1,1 @@
+obj-m := msm_sps_test_module.o

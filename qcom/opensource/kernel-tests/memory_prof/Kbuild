@@ -1,0 +1,3 @@
+obj-m := the_memory_prof_module.o
+
+the_memory_prof_module-y := memory_prof_module.o timing_debug.o

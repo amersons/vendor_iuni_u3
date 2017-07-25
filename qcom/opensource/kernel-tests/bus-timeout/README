@@ -1,0 +1,20 @@
+	Bus Timeout Documentation
+
+Usage: insert module
+
+OPTIONS: (none)
+
+TEST BEHAVIOR: Force a bus hang. If successful, the target will be reset by
+the watchdog. The kernel will panic on a failure. Returning back to the command
+prompt is also considered a failure.
+
+LIMITATIONS: In order for the test to run correctly, clocks must be off.
+Unfortunately, there is no guarantee with the public clock APIs that the
+clock will actually be off after one clk_disable call. The easiest way
+to guarantee that the disable will actually work is to make sure the
+system is not using the required clocks.
+
+For this module, the camera must not be on while attempting to do the
+test since the camera registers are used for testing.
+
+TARGETS: 8974

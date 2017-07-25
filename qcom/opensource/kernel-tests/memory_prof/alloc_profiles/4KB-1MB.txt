@@ -1,0 +1,66 @@
+# Do allocations for the stand heap/flags configurations for sizes
+# 4KB, 8KB, 16KB, 32KB, 64KB, 128KB, 256KB, 512KB, 1MB
+
+### 4KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x1000,4KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x1000,4KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x1000,4KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x1000,4KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x1000,4KB,false,true,true
+
+### 8KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x2000,8KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x2000,8KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x2000,8KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x2000,8KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x2000,8KB,false,true,true
+
+### 16KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x4000,16KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x4000,16KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x4000,16KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x4000,16KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x4000,16KB,false,true,true
+
+### 32KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x8000,32KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x8000,32KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x8000,32KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x8000,32KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x8000,32KB,false,true,true
+
+### 64KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x10000,64KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x10000,64KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x10000,64KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x10000,64KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x10000,64KB,false,true,true
+
+### 128KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x20000,128KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x20000,128KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x20000,128KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x20000,128KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x20000,128KB,false,true,true
+
+### 256KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x40000,256KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x40000,256KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x40000,256KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x40000,256KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x40000,256KB,false,true,true
+
+### 512KB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x80000,512KB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x80000,512KB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x80000,512KB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x80000,512KB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x80000,512KB,false,true,true
+
+### 1MB
+alloc,50,ION_CP_MM_HEAP_ID,ION_FLAG_SECURE,0x100000,1MB,false,false,false
+alloc,50,ION_IOMMU_HEAP_ID,0,0x100000,1MB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0x100000,1MB,false,true,true
+alloc,50,ION_SYSTEM_HEAP_ID,0,0x100000,1MB,false,false,false
+alloc,50,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x100000,1MB,false,true,true
+

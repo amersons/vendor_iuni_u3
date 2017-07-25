@@ -1,0 +1,24 @@
+# op,[rest...]
+# when op==alloc: op,reps,heap_id,flags,alloc_size_bytes,alloc_size_label,quiet_on_failure,profile_mmap,profile_memset
+# when op==sleep: op,time_us
+alloc,1,ION_CP_MM_HEAP_ID,ION_SECURE,0x100000,1MB,false,false,false
+alloc,50,ION_CP_MM_HEAP_ID,ION_SECURE,0x100000,1MB,false,false,false
+sleep,1000
+alloc,50,ION_IOMMU_HEAP_ID,0,0xA00000,10MB,false,true,true
+alloc,50,ION_IOMMU_HEAP_ID,ION_FLAG_CACHED,0xA00000,10MB,false,true,true
+alloc,50,ION_SYSTEM_CONTIG_HEAP_ID,ION_FLAG_CACHED,0x1000,4KB,false,true,true
+alloc,50,ION_SYSTEM_CONTIG_HEAP_ID,0,0x1000,4KB,false,true,true
+
+
+alloc,1000,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x1000,4KB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x300000,3MB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x500000,5MB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0xA00000,10MB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x1400000,20MB,false,true,true
+
+alloc,1000,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x1000,4KB,false,true,true
+sleep,10000
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x300000,3MB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x500000,5MB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0xA00000,10MB,false,true,true
+alloc,10,ION_SYSTEM_HEAP_ID,ION_FLAG_CACHED,0x1400000,20MB,false,true,true

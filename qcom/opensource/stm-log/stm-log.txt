@@ -1,0 +1,132 @@
+STM Logging
+===========
+
+This library provides an interface for userspace application to log via STM.
+Note that the task must already have write permission to the stm device node.
+
+This file describes the STM logging API's and associate definitions.
+
+
+1) Definitions:
+~~~~~~~~~~~~~~~
+1.1) Header file includes:
+  #include <stdint.h>
+  #include <linux/coresight-stm.h>
+  #include <stm_log.h>  // stmlog.h resides in /vendor/qcom/opensource/stmlog/inc
+                        // and must be part of the compiler include search path
+
+1.2) Linking:
+  The STM logging library is available in dynamic library form.
+
+1.3) Entity ID:
+  Description:
+    Entity ID is an unsigned byte value (range 0-255) and are pre-allocated
+    for each individual clients.  The entity ID allocation is defined in the
+    kernel file /usr/include/linux/coresight-stm.h.  Refer to the kernel
+    header file for instructions on allocating a new entity ID.
+
+    Note that entity ID's are not verified at runtime for clients, so it is
+    possible for a different client to (incorrectly) use the wrong ID.
+
+
+2) Initialization functions:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.1) stm_log_initdefaults(uint32_t init_mask,
+                          uint8_t  entity_id,
+                          uint8_t  proto_id,
+                          uint32_t options)
+  Description:
+    Optional initialization function to specify the default entity ID, protocol
+    ID and/or options for stm logging.  Takes effect on all subsequent calls
+    to the STM logging API.
+
+    If this function is not called then a compile-time default is used with
+    entity ID of zero (OST_ENTITY_NONE).
+
+  Parameters:
+    init_mask: Indicate which default parameter(s) is being set (bitmask).
+                 STM_DFLT_ENTITY
+                 STM_DFLT_PROTOCOL
+                 STM_DFLT_OPTIONS
+    entity_id: Specify the default entity ID
+    proto_id:  Specify the default protocol ID
+    options:   Specify the default options; refer to kernel's coresight-stm.h
+               Currently available options are:
+                 STM_OPTION_NONE
+                 STM_OPTION_TIMESTAMPED
+                 STM_OPTION_GUARANTEED
+
+  Example:
+    // Set default entity id to 5 and enable log timestamps
+    stmlog_initdefaults(STM_DFLT_ENTITY | STM_DFLT_OPTIONS,
+                        5, 0, STM_OPTION_TIMESTAMPED);
+
+
+3) Logging functions:
+~~~~~~~~~~~~~~~~~~~~~
+
+3.1) stm_log(const char *format, ...)
+  Description:
+    Generate a log via STM using the default entity/protocol ID and options.
+    The parameters are passed to vsprintf() for parsing and so %d/%s/etc.
+    parameters are valid.
+
+  Parameters:
+    Same parameters as printf().  Refer to man pages for printf() for details.
+
+  Examples:
+    stm_log("event X");
+    stm_log("event Y, data %d", varY);
+
+3.2) stm_logbin(int length, void *data)
+  Description:
+    Generate a binary log via STM using the default entity/protocol ID and
+    options.
+
+  Parameters:
+    length: Length of binary log data in bytes
+    data:   Binary data
+
+3.3) stm_log_ex(uint8_t     entity_id,
+                uint8_t     proto_id,
+                uint32_t    options,
+                const char *format, ...)
+  Description:
+    An extended form of stmlog() to explicitly specify all options for logging
+    (e.g. override the entity/protocol ID's or options).
+
+  Parameters:
+    entity_id: Specify the default entity ID
+    proto_id:  Specify the default protocol ID
+    options:   Specify the default options
+    ...:       Same as stm_log()
+
+3.4) stm_logbin_ex(uint8_t     entity_id,
+                   uint8_t     proto_id,
+                   uint32_t    options,
+                   int         length,
+                   void        *data)
+  Description:
+    Generate a binary log via STM using the specified entity/protocol ID and
+    options.
+
+  Parameters:
+    entity_id: Specify the default entity ID
+    proto_id:  Specify the default protocol ID
+    options:   Specify the default options
+    ...:       Same as stm_logbin()
+
+
+4) Limitations:
+~~~~~~~~~~~~~~~
+
+4.1) stm_log() and stm_log_ex()
+  Log strings via stm_log() or stm_log_ex() are automatically truncated to a
+  maximum of 1024 bytes including the terminating NULL character.
+
+4.2) stm_logbin() and stm_logbin_ex()
+  A single log via stm_logbin() or stm_logbin_ex() that is greater than 2048
+  bytes are broken down into individual packets up to 2048 bytes before
+  sending over the underlying STM transport.  The header is replicated for
+  each log.

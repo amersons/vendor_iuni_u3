@@ -1,0 +1,10 @@
+LIBRARY libAKM
+
+EXPORTS
+	AKMD_Init
+	AKMD_Release
+	AKMD_Start
+	AKMD_Stop
+	AKMD_GetData
+	AKMD_ResetDOE
+	AKMD_ChangeFormation

@@ -1,0 +1,25 @@
+<!---/**************************************************************************
+*  Copyright (c) 2014 Qualcomm Technologies, Inc.  All Rights Reserved.
+*  Qualcomm Technologies Proprietary and Confidential.
+*  *****************************************************************************-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/background_light" >
+
+    <Button
+		android:id="@+id/offscreen_virtual_drawing_area"
+        android:layout_width="1182dp"
+        android:layout_height="665dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/offscreen_virtual_button"
+        android:layout_width="221dp"
+        android:layout_height="221dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="48dp" />
+
+</RelativeLayout>

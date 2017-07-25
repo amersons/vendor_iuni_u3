@@ -1,0 +1,42 @@
+parse_memory_prof_results.py:
+=================
+
+	parse_memory_prof_results.py produces histograms and/or graphs from the
+	output of the `memory_prof -e' test.
+
+USAGE:
+
+	See `parse_memory_prof_results.py -h'
+
+DEPENDECIES:
+
+	- Python package: matplotlib (only required for graphical
+          plots)
+
+	- Python package: numpy (only required for graphical plots)
+
+TARGETS:
+
+	Applicable on all targets where the memory_prof test runs.
+
+
+tracepoint_parser.sh:
+=====================
+
+	tracepoint_parser.sh runs the memory_prof kernel test with
+	some interesting memory-related ftrace events enabled. It then
+	parses the log and outputs some statistics regarding
+	high-order page allocation ratios, allocation failure ratios,
+	etc.
+
+USAGE:
+
+	See `tracepoint_parser.sh -h'
+
+DEPENDENCIES:
+
+	- Kernel config: CONFIG_FTRACE
+
+TARGETS:
+
+	Applicable on all targets where the memory_prof test runs.
